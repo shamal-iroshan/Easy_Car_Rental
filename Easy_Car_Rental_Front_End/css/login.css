@@ -8,12 +8,6 @@ body{
     height: 100vh;
 }
 
-.card {
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
-    margin-bottom: 10px; /* Added */
-}
-
 #login-card{
     position: absolute;
     top: 0;
@@ -21,4 +15,11 @@ body{
     left: 0;
     right: 0;
     margin: auto;
+    width: 70%;
+    height: 70%;
+    background: white;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px -8px 68px -5px rgba(135,133,135,1);
+    -moz-box-shadow: 0px -8px 68px -5px rgba(135,133,135,1);
+    box-shadow: 0px -8px 68px -5px rgba(135,133,135,1);
 }
