@@ -23,3 +23,85 @@ body{
     -moz-box-shadow: 0px -8px 68px -5px rgba(135,133,135,1);
     box-shadow: 0px -8px 68px -5px rgba(135,133,135,1);
 }
+
+#login-container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    height: 100%;
+    padding-top: 13%;
+    padding-left: 6%;
+}
+
+#heading{
+    position: absolute;
+    top: 4%;
+    left: 4%;
+}
+#heading{
+    font-weight: bold;
+    font-size: 30px;
+}
+#heading>span{
+    color: #6433D7;
+}
+
+#login-img{
+    width: 480px;
+    height: 300px;
+    margin-top: 5%;
+}
+
+#frm-login{
+    width: 500px;
+    margin-left: 50px;
+}
+
+#btnLogin{
+    background: #6433D7;
+    border: 1px solid #6433D7;
+    border-radius: 40px;
+    width: 150px;
+    height: 45px;
+    margin-top: 5%;
+}
+
+#signup-header{
+    text-align: right;
+    margin-top: -25%;
+}
+#signup-header>p{
+    font-weight: bold;
+}
+#signup-header>p>span{
+    color: #6433D7;
+}
+
+#login-description{
+    font-weight: bold;
+    margin-top: 20%;
+    margin-bottom: 10%;
+}
+#login-description>p{
+    color: #4e555b;
+}
+
+#txtEmail{
+    height: 50px;
+    margin-bottom: 40px;
+}
+#txtEmail::placeholder{
+    font-weight: bold;
+}
+#txtPassword{
+    height: 50px;
+}
+#txtPassword::placeholder{
+    font-weight: bold;
+}

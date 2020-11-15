@@ -1,0 +1,42 @@
+#top-panel{
+    width: 100%;
+    height: 7vh;
+    background: rgba(100, 51, 215, 0.43);
+    text-align: right;
+}
+
+#side-panel{
+    height: 93vh;
+    width: 17%;
+    background: linear-gradient(179.98deg, rgba(100, 51, 215, 0.43) 0.02%, #FFFFFF 69.02%), #FFFFFF;
+    position: relative;
+}
+
+#main-container{
+    width: 83%;
+    height: 93vh;
+    background: #E8E8E8;
+}
+
+#btnSample{
+    background: #6433D7;
+    border: 1px solid #6433D7;
+    width: 100%;
+    height: 70px;
+    margin-top: 14%;
+    position: relative;
+}
+#btnSample:focus{
+    border: none;
+}
+
+.btnSelected{
+    height: 100%;
+    width: 6px;
+    background: white;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
