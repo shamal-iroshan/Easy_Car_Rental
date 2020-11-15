@@ -11,23 +11,31 @@
 </head>
 <body>
 
-    <div id="top-panel">
-        <h2>Welcome User</h2>
+    <div id="side-panel">
+
+        <div style="text-align: center">
+            <img src="assets/img/user.png" alt="user" id="user-image">
+        </div>
+
+        <h3 id="user-name">User name</h3>
+
+        <div style="text-align: right; margin-top: 80px">
+            <button type="button" class="btn-custom-selected" id="btnHome">Home</button>
+            <button type="button" class="btn-custom" id="btnRent">Rent</button>
+            <button type="button" class="btn-custom" id="btnHistory">History</button>
+            <button type="button" class="btn-custom" id="btnCustom">Custom</button>
+            <button type="button" class="btn-custom" id="btnFinal">Final</button>
+        </div>
+
+        <div>
+            <div id="horizontal-line"></div>
+        </div>
+
+
     </div>
 
-    <div style="display: flex">
-        <div id="side-panel">
-            <button type="button" id="btnSample">Sample
-                <div class="btnSelected">
-
-                </div>
-            </button>
-        </div>
-
-        <div id="main-container">
-
-        </div>
-
+    <div id="main-container">
+        <img src="assets/img/aaa.png" alt="" style="width: 100%; height: 100%">
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -37,6 +45,6 @@
             integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
             crossorigin="anonymous"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
-
+    <script src="js/sample.js"></script>
 </body>
 </html>

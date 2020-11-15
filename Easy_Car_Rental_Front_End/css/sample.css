@@ -1,42 +1,65 @@
-#top-panel{
-    width: 100%;
-    height: 7vh;
-    background: rgba(100, 51, 215, 0.43);
-    text-align: right;
+button:focus{
+    outline: none;
 }
 
 #side-panel{
-    height: 93vh;
-    width: 17%;
-    background: linear-gradient(179.98deg, rgba(100, 51, 215, 0.43) 0.02%, #FFFFFF 69.02%), #FFFFFF;
-    position: relative;
+    margin: 20px 0 20px 20px;
+    border-radius: 50px;
+    background: #6433D7;
+    width: 300px;
+    height: 95vh;
+    position: fixed;
 }
+
+#user-image{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    margin-top: 8%;
+}
+
+#user-name{
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.btn-custom{
+    background: #6433D7;
+    border: none;
+    width: 280px;
+    height: 50px;
+    margin-bottom: 10px ;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.btn-custom-selected{
+    background: white;
+    border: none;
+    width: 280px;
+    height: 50px;
+    border-radius: 50px 0 0 50px;
+    margin-bottom: 10px ;
+    color: #6433D7;
+    font-weight: 600;
+}
+
+#horizontal-line{
+    height: 2px;
+    width: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,1) 31%, rgba(100,51,215,1) 68%);
+    position: absolute;
+    bottom: 8%;
+}
+
+/*//////////////////////////////////////////////////////////*/
 
 #main-container{
-    width: 83%;
-    height: 93vh;
-    background: #E8E8E8;
+    margin-left: 320px;
+    width: 80%;
+    height: 100vh;
 }
 
-#btnSample{
-    background: #6433D7;
-    border: 1px solid #6433D7;
-    width: 100%;
-    height: 70px;
-    margin-top: 14%;
-    position: relative;
-}
-#btnSample:focus{
-    border: none;
-}
-
-.btnSelected{
-    height: 100%;
-    width: 6px;
-    background: white;
-    margin: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
 

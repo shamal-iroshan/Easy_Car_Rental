@@ -1,3 +1,7 @@
+button:focus{
+    outline: none;
+}
+
 body{
     background: rgb(250,250,250);
     background: linear-gradient(180deg, rgba(250,250,250,1) 0%, rgba(223,223,223,1) 100%);
@@ -72,6 +76,14 @@ body{
     margin-top: 5%;
 }
 
+#guest-login{
+    width: 200px;
+    margin-top: 8%;
+    margin-left: 10%;
+    font-weight: bold;
+    color: #4e555b;
+}
+
 #signup-header{
     text-align: right;
     margin-top: -25%;
@@ -104,4 +116,27 @@ body{
 }
 #txtPassword::placeholder{
     font-weight: bold;
+}
+
+#btnRegister{
+    background: #6433D7;
+    border: 1px solid #6433D7;
+    border-radius: 40px;
+    width: 150px;
+    height: 45px;
+}
+
+#btnClose{
+    background: white;
+    border: 1px solid #8c8c8c;
+    border-radius: 40px;
+    width: 100px;
+    height: 45px;
+    color: #8C8C8C;
+}
+
+#btnClose:hover{
+    background: #8C8C8C;
+    border: 1px solid white;
+    color: white;
 }
