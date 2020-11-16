@@ -1,5 +1,9 @@
 package lk.ijse.easy_car_rental.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,17 +11,21 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 public class Customer {
     @Id
-    String customerID;
-    String name;
-    String contact;
-    String email;
-    String address;
-    String drivingLicenceNo;
-    String nicNo;
+    private String customerID;
+    private String name;
+    private String contact;
+    private String email;
+    private String address;
+    private String drivingLicenceNo;
+    private String nicNo;
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-    List<Request> requests = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
+
 }

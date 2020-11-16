@@ -1,12 +1,19 @@
 package lk.ijse.easy_car_rental.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 public class User {
     @Id
-    String userID;
-    String password;
-    String role;
+    private String userID;
+    private String password;
+    private String role;
 }

@@ -1,18 +1,25 @@
 package lk.ijse.easy_car_rental.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 public class Driver {
     @Id
-    String driverID;
-    String name;
-    String contactNo;
-    String nic;
+    private String driverID;
+    private String name;
+    private String contactNo;
+    private String nic;
 
-    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
-    RequestDetail requestDetail;
+    @OneToMany(mappedBy = "driver",cascade = CascadeType.ALL)
+    List<Booking> bookings = new ArrayList<>();
+
 }

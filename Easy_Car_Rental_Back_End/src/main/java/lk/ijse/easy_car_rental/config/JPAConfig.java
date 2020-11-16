@@ -1,5 +1,6 @@
 package lk.ijse.easy_car_rental.config;
 
+import lk.ijse.easy_car_rental.repo.CustomerRepo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -16,8 +17,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
-//configure base class package for jpa repository repo
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackageClasses = CustomerRepo.class)
 @EnableTransactionManagement
 public class JPAConfig {
 
