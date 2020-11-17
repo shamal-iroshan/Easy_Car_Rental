@@ -51,11 +51,15 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String getLastLoginID() {
         String lastID = loginRepo.getLastID();
-        String[] split = lastID.split("U");
-        int id = Integer.parseInt(split[1]);
-        id++;
-        if (id < 10) return "U00" + id;
-        else if (id < 100) return "U0" + id;
-        else return "U" + id;
+        if (!lastID.equals("")) {
+            String[] split = lastID.split("U");
+            int id = Integer.parseInt(split[1]);
+            id++;
+            if (id < 10) return "U00" + id;
+            else if (id < 100) return "U0" + id;
+            else return "U" + id;
+        }else{
+            return "U001";
+        }
     }
 }

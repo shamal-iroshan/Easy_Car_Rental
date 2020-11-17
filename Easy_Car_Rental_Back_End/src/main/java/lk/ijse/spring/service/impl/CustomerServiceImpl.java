@@ -26,18 +26,15 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void saveCustomer(CustomerDto dto) {
-        if (!repo.existsById(dto.getId())) {
-            Customer c = mapper.map(dto, Customer.class);
-            repo.save(c);
-        } else {
-            throw new RuntimeException("Customer already exist..!");
-        }
-
+        Customer customer = mapper.map(dto, Customer.class);
+        customer.setCustomerID(getLastLoginID());
+        repo.save(customer);
     }
+
 
     @Override
     public void updateCustomer(CustomerDto dto) {
-        if (repo.existsById(dto.getId())) {
+        if (repo.existsById(dto.getCustomerID())) {
             Customer c = mapper.map(dto, Customer.class);
             repo.save(c);
         } else {
@@ -70,6 +67,21 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> all = repo.findAll();
         return mapper.map(all, new TypeToken<List<CustomerDto>>() {
         }.getType());
+    }
+
+    @Override
+    public String getLastLoginID() {
+        String lastID = repo.getLastID();
+        if (lastID != null) {
+            String[] split = lastID.split("C");
+            int id = Integer.parseInt(split[1]);
+            id++;
+            if (id < 10) return "C00" + id;
+            else if (id < 100) return "C0" + id;
+            else return "C" + id;
+        }else{
+            return "C001";
+        }
     }
 
 

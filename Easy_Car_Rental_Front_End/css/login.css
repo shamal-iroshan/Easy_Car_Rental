@@ -87,6 +87,7 @@ body{
 #signup-header{
     text-align: right;
     margin-top: -25%;
+    margin-right: 4%;
 }
 #signup-header>p{
     font-weight: bold;

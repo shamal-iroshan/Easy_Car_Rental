@@ -1,60 +1,20 @@
 package lk.ijse.spring.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class CustomerDto {
-    private String id;
+    private String customerID;
     private String name;
+    private String contact;
+    private String email;
     private String address;
-    private double salary;
-
-    public CustomerDto() {
-    }
-
-    public CustomerDto(String id, String name, String address, double salary) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.salary = salary;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    @Override
-    public String toString() {
-        return "CustomerDto{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", salary=" + salary +
-                '}';
-    }
+    private String drivingLicenceNo;
+    private String nicNo;
+    private String userName;
+    private String password;
 }
