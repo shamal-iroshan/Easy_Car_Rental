@@ -17,6 +17,4 @@ public class Login {
     private String password;
     private String role;
 
-    @OneToOne(mappedBy = "login",cascade = CascadeType.ALL)
-    private lk.ijse.spring.entity.Driver driver;
 }

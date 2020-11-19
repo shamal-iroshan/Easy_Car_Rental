@@ -23,6 +23,10 @@ public class Car {
     private double priceForExtraKM;
     private String registrationNumber;
     private String colour;
+    private double dailyRate;
+    private double monthlyRate;
+    private double freeMillagePrice;
+    private String freeMillageDuration;
 
     @OneToMany(mappedBy = "car",cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
@@ -30,12 +34,5 @@ public class Car {
     @OneToMany(mappedBy = "car",cascade = CascadeType.ALL)
     private List<Maintainance> maintainances = new ArrayList<>();
 
-    @OneToOne(cascade ={CascadeType.ALL})
-    @JoinColumn(name = "freeMillageid", referencedColumnName = "freeMillageID", nullable = false)
-    private FreeMillage freeMillage;
-
-    @OneToOne(cascade ={CascadeType.ALL})
-    @JoinColumn(name = "durationid", referencedColumnName = "rdID", nullable = false)
-    private RentDuration rentDuration;
 
 }

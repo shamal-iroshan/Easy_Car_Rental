@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/frameworks/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sample.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+
+<div id="side-panel">
+
+    <div style="text-align: center">
+        <img src="assets/img/user.png" alt="user" id="user-image">
+    </div>
+
+    <h3 id="user-name">User name</h3>
+
+    <div style="text-align: right; margin-top: 25px">
+        <button type="button" class="btn-custom-selected" id="btnDashboard">Dashboard</button>
+        <button type="button" class="btn-custom" id="btnAddCar">Add Car</button>
+        <button type="button" class="btn-custom" id="btnCustomer">Customers</button>
+        <button type="button" class="btn-custom" id="btnBookings">Bookings</button>
+        <button type="button" class="btn-custom" id="btnDriver">Driver Schedules</button>
+        <button type="button" class="btn-custom" id="btnPayments">Payments</button>
+        <button type="button" class="btn-custom" id="btnReports">Reports</button>
+        <button type="button" class="btn-custom" id="btnCarMaintenances">Car Maintenances</button>
+    </div>
+
+    <div>
+        <div id="horizontal-line"></div>
+    </div>
+
+
+</div>
+
+<div id="main-container">
+    <div id="dashboard" style="display: none">
+        <img src="assets/img/aaa.png" alt="" style="width: 100%; height: 100%">
+    </div>
+
+    <div id="car">
+        <div class="container-fluid">
+            <form>
+                <div class="row">
+                    <div class="col-4">
+                        <input type="text" class="form-control" id="txtBrand" placeholder="Brand">
+                    </div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" id="txtNoPassengers" placeholder="No of passengers">
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="cmbType"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Car Type
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="cmbType">
+                            <a class="dropdown-item" href="#">General</a>
+                            <a class="dropdown-item" href="#">Premium</a>
+                            <a class="dropdown-item" href="#">Luxury</a>
+                        </div>
+                    </div>
+                    <div class="dropdown ml-4">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="cmbTransmission"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Transmission
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="cmbTransmission">
+                            <a class="dropdown-item" href="#">Auto</a>
+                            <a class="dropdown-item" href="#">Manual</a>
+                        </div>
+                    </div>
+                    <div class="dropdown ml-4">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="cmbFuel"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Fuel Type
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="cmbFuel">
+                            <a class="dropdown-item" href="#">Diesel</a>
+                            <a class="dropdown-item" href="#">Petrol</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="txtRegistrationNo" placeholder="Registration No">
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="txtColour" placeholder="Vehicle colour">
+                    </div>
+
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imgFront"
+                                       aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="imgFront">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mt-3 mb-3">
+
+                <h3 class="text-center mb-3">Price for Rent durations</h3>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="email" class="form-control" id="txtDailyRate" placeholder="Daily Rate">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="password" class="form-control" id="txtMonthlyRate" placeholder="Monthly Rate">
+                    </div>
+                </div>
+
+                <h3 class="text-center mb-3">Free Millage</h3>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="email" class="form-control" id="txtPrice" placeholder="Price">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="password" class="form-control" id="txtDuration" placeholder="Duration">
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="txtPriceForExtraKM" placeholder="Price for Extra KM">
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="btn-group btn-group-lg" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-success" id="btnSaveCar">Save</button>
+                            <button type="button" class="btn btn-warning">Update</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-primary text-white" id="basic-addon3">Search</span>
+                            </div>
+                            <input type="text" class="form-control" id="txtSearch" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+
+<!--                <div style="height: 400px; overflow-y: scroll; overflow-x: hidden" class="container-fluid">-->
+
+<!--                </div>-->
+
+                <div>
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Registration No</th>
+                            <th scope="col">No of passenger</th>
+                            <th scope="col">Transmission</th>
+                            <th scope="col">Car Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="customer"></div>
+
+    <div id="bookings"></div>
+
+    <div id="driver"></div>
+
+    <div id="payments">
+
+        <div id="reports"></div>
+
+        <div id="maintenance"></div>
+    </div>
+
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/adminUI.js"></script>
+
+</body>
+</html>

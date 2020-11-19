@@ -1,0 +1,22 @@
+#car{
+    display: block;
+    padding-top: 50px;
+}
+#customer{
+    display: none;
+}
+#bookings{
+    display: none;
+}
+#driver{
+    display: none;
+}
+#payments{
+    display: none;
+}
+#reports{
+    display: none;
+}
+#maintenance{
+    display: none;
+}
