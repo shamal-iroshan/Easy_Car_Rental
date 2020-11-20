@@ -8,4 +8,8 @@ This is a Maven project Use npm init to install project.
 
 ```bash
 npm init
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> origin/master
