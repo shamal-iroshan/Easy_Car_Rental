@@ -20,6 +20,8 @@ public class Driver {
     private String name;
     private String contactNo;
     private String nic;
+    private String userName;
+    private String password;
 
     @OneToMany(mappedBy = "driver",cascade = CascadeType.ALL)
     List<lk.ijse.spring.entity.Booking> bookings = new ArrayList<>();

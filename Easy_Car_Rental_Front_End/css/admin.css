@@ -1,22 +1,28 @@
 #car{
-    display: block;
+    display: none;
     padding-top: 50px;
 }
 #customer{
     display: none;
+    padding-top: 50px;
 }
 #bookings{
     display: none;
+    padding-top: 50px;
 }
 #driver{
     display: none;
+    padding-top: 50px;
 }
 #payments{
     display: none;
+    padding-top: 50px;
 }
 #reports{
     display: none;
+    padding-top: 50px;
 }
 #maintenance{
     display: none;
+    padding-top: 50px;
 }

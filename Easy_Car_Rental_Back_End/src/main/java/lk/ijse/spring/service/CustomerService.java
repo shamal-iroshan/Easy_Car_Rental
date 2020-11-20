@@ -12,4 +12,5 @@ public interface CustomerService {
     void deleteCustomer(String id);
     List<CustomerDto> getAllCustomer();
     String getLastLoginID();
+    CustomerDto login(String userName, String password);
 }

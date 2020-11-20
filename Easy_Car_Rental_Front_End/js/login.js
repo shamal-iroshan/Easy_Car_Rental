@@ -1,3 +1,5 @@
+var user;
+
 $('#btnRegister').click(function () {
     let name = $("#txtName").val();
     let contact = $('#txtContactNo').val();
@@ -40,20 +42,24 @@ $('#btnRegister').click(function () {
 });
 
 $('#btnLogin').click(function () {
-    let userName = $('#txtUserName').val();
+    let userName = $('#txtEmail').val();
     let password = $('#txtPassword').val();
 
-    $.ajax({
-        method: "GET",
-        url: 'http://localhost:8080/carRental/api/v1/customer',
-        data:JSON.stringify({
-            "userName":userName,
-            "password":password
-        }),
-        dataType:'Json',
-        contentType: "application/json; charset=utf-8",
-        success:function (res) {
-            console.log(res);
-        }
-    });
+    if (userName == ""){
+        alert('Enter User Name..!');
+    }else if(password == ""){
+        alert('Enter Password..!');
+    }else{
+        $.ajax({
+            method: "GET",
+            url: 'http://localhost:8080/carRental/api/v1/customer/'+userName+'/'+password,
+            success:function (res) {
+                if(res.message == 'true'){
+                    user = res.data;
+                    window.location.replace("customer.html");
+                }
+            }
+        });
+    }
+
 });

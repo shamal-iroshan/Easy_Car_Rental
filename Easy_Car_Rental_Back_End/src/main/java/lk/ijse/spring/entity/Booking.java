@@ -21,15 +21,15 @@ public class Booking {
     private String status;
     private String note;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "cusID", referencedColumnName = "customerID", nullable = false)
     private Customer customer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "carid", referencedColumnName = "carID", nullable = false)
     private lk.ijse.spring.entity.Car car;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "driverid", referencedColumnName = "driverID", nullable = false)
     private Driver driver;
 

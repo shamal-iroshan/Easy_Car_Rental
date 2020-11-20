@@ -1,9 +1,11 @@
 package lk.ijse.spring.controller;
 
 import lk.ijse.spring.dto.CustomerDto;
+import lk.ijse.spring.dto.DriverDto;
 import lk.ijse.spring.dto.LoginDto;
 import lk.ijse.spring.dto.RegistrationDto;
 import lk.ijse.spring.service.CustomerService;
+import lk.ijse.spring.service.DriverService;
 import lk.ijse.spring.service.LoginService;
 import lk.ijse.spring.service.impl.CustomerServiceImpl;
 import lk.ijse.spring.util.StandardResponse;
@@ -26,19 +28,33 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    DriverService driverService;
+
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity addCustomer(@RequestBody CustomerDto dto) {
         dto.setPassword(hashPassword(dto.getPassword()));
+        System.out.println(dto.getPassword());
         customerService.saveCustomer(dto);
         StandardResponse response = new StandardResponse(200, "Success", null);
         return new ResponseEntity(response, HttpStatus.CREATED);
     }
 
-    @GetMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity login(){
-        StandardResponse response = new StandardResponse(200, "true", null);
-        return new ResponseEntity(response, HttpStatus.CREATED);
+    @GetMapping(path = "/{userName}/{password}")
+    public ResponseEntity login(@PathVariable("userName") String val1, @PathVariable("password") String val2){
+        val2 = hashPassword(val2);
+        CustomerDto customerDto = customerService.login(val1, val2);
+        if(customerDto != null){
+            customerDto.setPassword("");
+            StandardResponse response = new StandardResponse(200, "true", customerDto);
+            return new ResponseEntity(response, HttpStatus.OK);
+        }else{
+            DriverDto driverDto = driverService.login(val1, val2);
+            driverDto.setPassword("");
+            StandardResponse response = new StandardResponse(200, "true", driverDto);
+            return new ResponseEntity(response, HttpStatus.OK);
+        }
     }
 
     @DeleteMapping(params = {"id"})
@@ -47,7 +63,7 @@ public class CustomerController {
         return new ResponseEntity(new StandardResponse(200, "Success", null), HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity updateCustomer(@RequestBody CustomerDto dto) {
         customerService.updateCustomer(dto);
         return new ResponseEntity(new StandardResponse(200, "Success", null), HttpStatus.OK);

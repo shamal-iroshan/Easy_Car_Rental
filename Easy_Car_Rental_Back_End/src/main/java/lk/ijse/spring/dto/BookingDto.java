@@ -17,4 +17,7 @@ public class BookingDto {
     private double lossDamageWaiver;
     private String status;
     private String note;
+    private CustomerDto customerDto;
+    private CarDto carDto;
+    private DriverDto driverDto;
 }

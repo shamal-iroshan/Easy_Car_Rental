@@ -2,6 +2,7 @@ package lk.ijse.spring.service.impl;
 
 import lk.ijse.spring.dto.DriverDto;
 import lk.ijse.spring.dto.LoginDto;
+import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.entity.Driver;
 import lk.ijse.spring.entity.Login;
 import lk.ijse.spring.repo.DriverRepo;
@@ -20,9 +21,6 @@ public class DriverServiseImpl implements DriverService {
 
     @Autowired
     DriverRepo driverRepo;
-
-    @Autowired
-    LoginRepo loginRepo;
 
     @Autowired
     ModelMapper mapper;
@@ -67,5 +65,15 @@ public class DriverServiseImpl implements DriverService {
         }else{
             return "D001";
         }
+    }
+
+    @Override
+    public DriverDto login(String userName, String password) {
+        Driver driver = driverRepo.login(userName, password);
+        if (driver == null){
+            throw new RuntimeException("Check Login details");
+        }
+
+        return mapper.map(driver,DriverDto.class);
     }
 }
