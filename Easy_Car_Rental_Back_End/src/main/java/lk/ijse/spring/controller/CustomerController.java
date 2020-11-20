@@ -60,7 +60,7 @@ public class CustomerController {
     @DeleteMapping(params = {"id"})
     public ResponseEntity deleteCustomer(@RequestParam String id) {
         customerService.deleteCustomer(id);
-        return new ResponseEntity(new StandardResponse(200, "Success", null), HttpStatus.CREATED);
+        return new ResponseEntity(new StandardResponse(200, "Success", null), HttpStatus.OK);
     }
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
@@ -75,7 +75,7 @@ public class CustomerController {
         return new ResponseEntity(new StandardResponse(200, "Success", customerDTO), HttpStatus.OK);
     }
 
-
+    @GetMapping
     public ResponseEntity getAllCustomers() {
         List<CustomerDto> allCustomers = customerService.getAllCustomer();
         return new ResponseEntity(new StandardResponse(200, "Success", allCustomers), HttpStatus.OK);

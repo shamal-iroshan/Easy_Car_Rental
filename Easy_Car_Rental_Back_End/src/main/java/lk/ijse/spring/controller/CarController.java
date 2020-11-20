@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1/car")
@@ -20,10 +22,35 @@ public class CarController {
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity saveCar(@RequestBody CarDto dto) {
         carService.saveCar(dto);
-        System.out.println(dto.toString());
         StandardResponse response = new StandardResponse(200, "Success", null);
         return new ResponseEntity(response, HttpStatus.CREATED);
     }
 
+    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity updateCar(@RequestBody CarDto dto){
+        carService.updateCar(dto);
+        StandardResponse response = new StandardResponse(200, "Success", null);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
 
+    @DeleteMapping(params = {"id"})
+    public ResponseEntity deleteCar(@RequestParam String id){
+        carService.deleteCar(id);
+        StandardResponse response = new StandardResponse(200, "Success", null);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity searchCar(String id){
+        CarDto carDto = carService.searchCar(id);
+        StandardResponse response = new StandardResponse(200, "Success", carDto);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity getAllCars(){
+        List<CarDto> allCars = carService.getAllCars();
+        StandardResponse response = new StandardResponse(200, "Success", allCars);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
 }

@@ -9,11 +9,13 @@ import lk.ijse.spring.repo.DriverRepo;
 import lk.ijse.spring.repo.LoginRepo;
 import lk.ijse.spring.service.DriverService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -34,22 +36,36 @@ public class DriverServiseImpl implements DriverService {
 
     @Override
     public void updateDriver(DriverDto dto) {
-
+        if (driverRepo.existsById(dto.getDriverID())){
+            driverRepo.save(mapper.map(dto,Driver.class));
+        }else {
+            throw new RuntimeException("No such driver for update..!");
+        }
     }
 
     @Override
     public void deleteDriver(String id) {
-
+        if (driverRepo.existsById(id)){
+            driverRepo.deleteById(id);
+        } else {
+            throw new RuntimeException("No customer for delete id: " + id);
+        }
     }
 
     @Override
     public DriverDto searchDriver(String id) {
-        return null;
+        Optional<Driver> driver = driverRepo.findById(id);
+        if (driver.isPresent()){
+            return mapper.map(driver, DriverDto.class);
+        }else{
+            throw new RuntimeException("No driver for id: " + id);
+        }
     }
 
     @Override
     public List<DriverDto> getAllDrivers() {
-        return null;
+        List<Driver> drivers = driverRepo.findAll();
+        return mapper.map(drivers, new TypeToken<List<DriverDto>>(){}.getType());
     }
 
     @Override

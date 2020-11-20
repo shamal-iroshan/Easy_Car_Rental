@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -33,6 +34,34 @@ public class DriverController {
 
         StandardResponse response = new StandardResponse(200, "Success", null);
         return new ResponseEntity(response, HttpStatus.CREATED);
+    }
+
+    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity updateDriver(@RequestBody DriverDto dto){
+        driverService.updateDriver(dto);
+        StandardResponse response = new StandardResponse(200, "Success", null);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping(params = {"id"})
+    public ResponseEntity deleteDriver(@RequestParam String id){
+        driverService.deleteDriver(id);
+        StandardResponse response = new StandardResponse(200, "Success", null);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity searchDriver(@PathVariable String id){
+        DriverDto driver = driverService.searchDriver(id);
+        StandardResponse response = new StandardResponse(200, "Success", driver);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity getAllDrivers(){
+        List<DriverDto> allDrivers = driverService.getAllDrivers();
+        StandardResponse response = new StandardResponse(200, "Success", allDrivers);
+        return new ResponseEntity(response, HttpStatus.OK);
     }
 
 
