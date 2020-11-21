@@ -8,11 +8,13 @@ import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.repo.DriverRepo;
 import lk.ijse.spring.service.BookingService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -42,22 +44,36 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void updateBooking(BookingDto dto) {
-
+        if(bookingRepo.existsById(dto.getBookingID())){
+            bookingRepo.save(modelMapper.map(dto, Booking.class));
+        }else{
+            throw new RuntimeException("No such Booking for update..!");
+        }
     }
 
     @Override
     public void deleteBooking(String id) {
-
+        if(bookingRepo.existsById(id)){
+            bookingRepo.deleteById(id);
+        }else{
+            throw new RuntimeException("No such Booking for update..!");
+        }
     }
 
     @Override
     public BookingDto searchBooking(String id) {
-        return null;
+        Optional<Booking> booking = bookingRepo.findById(id);
+        if(booking.isPresent()){
+            return modelMapper.map(booking, BookingDto.class);
+        }else{
+            throw new RuntimeException("No Booking for id: " + id);
+        }
     }
 
     @Override
     public List<BookingDto> getAllBooking() {
-        return null;
+        List<Booking> bookings = bookingRepo.findAll();
+        return modelMapper.map(bookings, new TypeToken<List<BookingDto>>(){}.getType());
     }
 
     @Override

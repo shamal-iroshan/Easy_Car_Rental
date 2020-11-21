@@ -23,6 +23,7 @@ public class Customer {
     private String address;
     private String drivingLicenceNo;
     private String nicNo;
+    private boolean verified;
     private String userName;
     private String password;
 

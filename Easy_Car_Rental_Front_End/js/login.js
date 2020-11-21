@@ -54,10 +54,16 @@ $('#btnLogin').click(function () {
             method: "GET",
             url: 'http://localhost:8080/carRental/api/v1/customer/'+userName+'/'+password,
             success:function (res) {
-                if(res.message == 'true'){
-                    user = res.data;
+                if(res.message == 'customer'){
+                    localStorage.setItem('loggedUser', res);
                     window.location.replace("customer.html");
+                }else if(res.message == 'driver'){
+                    localStorage.setItem('loggedUser', res);
+                    window.location.replace("driver.html");
                 }
+            },
+            error:function (ob, textStatus, error) {
+                console.log("error from : " + error);
             }
         });
     }

@@ -1,9 +1,7 @@
 package lk.ijse.spring.controller;
 
-import lk.ijse.spring.dto.CustomerDto;
-import lk.ijse.spring.dto.DriverDto;
-import lk.ijse.spring.dto.LoginDto;
-import lk.ijse.spring.dto.RegistrationDto;
+import lk.ijse.spring.dto.*;
+import lk.ijse.spring.service.AdminService;
 import lk.ijse.spring.service.CustomerService;
 import lk.ijse.spring.service.DriverService;
 import lk.ijse.spring.service.LoginService;
@@ -31,11 +29,13 @@ public class CustomerController {
     @Autowired
     DriverService driverService;
 
+    @Autowired
+    AdminService adminService;
+
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity addCustomer(@RequestBody CustomerDto dto) {
         dto.setPassword(hashPassword(dto.getPassword()));
-        System.out.println(dto.getPassword());
         customerService.saveCustomer(dto);
         StandardResponse response = new StandardResponse(200, "Success", null);
         return new ResponseEntity(response, HttpStatus.CREATED);
@@ -47,13 +47,25 @@ public class CustomerController {
         CustomerDto customerDto = customerService.login(val1, val2);
         if(customerDto != null){
             customerDto.setPassword("");
-            StandardResponse response = new StandardResponse(200, "true", customerDto);
+            StandardResponse response = new StandardResponse(200, "customer", customerDto);
             return new ResponseEntity(response, HttpStatus.OK);
         }else{
             DriverDto driverDto = driverService.login(val1, val2);
-            driverDto.setPassword("");
-            StandardResponse response = new StandardResponse(200, "true", driverDto);
-            return new ResponseEntity(response, HttpStatus.OK);
+            if (driverDto != null){
+                driverDto.setPassword("");
+                StandardResponse response = new StandardResponse(200, "driver", driverDto);
+                return new ResponseEntity(response, HttpStatus.OK);
+            }else{
+                AdminDto adminDto = adminService.login(val1, val2);
+                if (adminDto != null){
+                    adminDto.setPassword("");
+                    StandardResponse response = new StandardResponse(200, "admin", null);
+                    return new ResponseEntity(response, HttpStatus.OK);
+                }else{
+                    StandardResponse response = new StandardResponse(500, "Error", null);
+                    return new ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }
         }
     }
 
@@ -65,6 +77,7 @@ public class CustomerController {
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity updateCustomer(@RequestBody CustomerDto dto) {
+        dto.setPassword(hashPassword(dto.getPassword()));
         customerService.updateCustomer(dto);
         return new ResponseEntity(new StandardResponse(200, "Success", null), HttpStatus.OK);
     }
