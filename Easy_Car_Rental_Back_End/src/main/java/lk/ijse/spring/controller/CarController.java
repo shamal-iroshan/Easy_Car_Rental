@@ -22,6 +22,7 @@ public class CarController {
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity saveCar(@RequestBody CarDto dto) {
         carService.saveCar(dto);
+        System.out.println(dto.toString());
         StandardResponse response = new StandardResponse(200, "Success", null);
         return new ResponseEntity(response, HttpStatus.CREATED);
     }
@@ -41,11 +42,27 @@ public class CarController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity searchCar(String id){
+    public ResponseEntity searchCar(@PathVariable String id){
+        System.out.println(id);
         CarDto carDto = carService.searchCar(id);
         StandardResponse response = new StandardResponse(200, "Success", carDto);
         return new ResponseEntity(response, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/{identity}/{type}")
+    public ResponseEntity getCarsByType(@PathVariable("type") String type){
+        List<CarDto> list = carService.getCarByType(type);
+        StandardResponse response = new StandardResponse(200, "Success", list);
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+//
+//    @GetMapping(params = {"id"})
+//    public ResponseEntity getCarByType(@RequestParam String type){
+//        System.out.println(type);
+////        List<CarDto> cars = carService.getCarByType(type);
+//        StandardResponse response = new StandardResponse(200, "Success", null);
+//        return new ResponseEntity(response, HttpStatus.OK);
+//    }
 
     @GetMapping
     public ResponseEntity getAllCars(){

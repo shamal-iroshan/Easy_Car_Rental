@@ -11,14 +11,15 @@ import lombok.ToString;
 @ToString
 public class CarDto {
     private String carID;
-    private String Brand;
-    private String Type;
+    private String brand;
+    private String type;
     private int numberOfPassengers;
     private String transmissionType;
     private String fuelType;
     private double priceForExtraKM;
     private String registrationNumber;
     private String colour;
+    private double lossDamageWaiver;
     private double dailyRate;
     private double monthlyRate;
     private double freeMillagePrice;

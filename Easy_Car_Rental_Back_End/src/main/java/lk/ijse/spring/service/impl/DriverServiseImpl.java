@@ -56,7 +56,7 @@ public class DriverServiseImpl implements DriverService {
     public DriverDto searchDriver(String id) {
         Optional<Driver> driver = driverRepo.findById(id);
         if (driver.isPresent()){
-            return mapper.map(driver, DriverDto.class);
+            return mapper.map(driver.get(), DriverDto.class);
         }else{
             throw new RuntimeException("No driver for id: " + id);
         }
@@ -87,7 +87,7 @@ public class DriverServiseImpl implements DriverService {
     public DriverDto login(String userName, String password) {
         Driver driver = driverRepo.login(userName, password);
         if (driver == null){
-            throw new RuntimeException("Check Login details");
+            return null;
         }
 
         return mapper.map(driver,DriverDto.class);

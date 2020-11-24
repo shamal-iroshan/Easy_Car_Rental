@@ -13,4 +13,6 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
     @Query(value = "SELECT * FROM customer WHERE userName=:userName AND password=:password",nativeQuery = true)
     Customer login(@Param("userName") String userName,@Param("password") String password);
 
+    @Query(value = "UPDATE customer SET verified='1' WHERE customerID=:id",nativeQuery = true)
+    void verify(@Param("id") String id);
 }

@@ -11,14 +11,14 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @ToString
-public class BookingDto {
+public class BookDto {
     private String bookingID;
     private String date;
     private String pickupDate;
     private String status;
     private String note;
     private String returnDate;
-    private CustomerDto customerDto;
-    private CarDto carDto;
-    private DriverDto driverDto;
+    private String customer;
+    private String car;
+    private String driver;
 }

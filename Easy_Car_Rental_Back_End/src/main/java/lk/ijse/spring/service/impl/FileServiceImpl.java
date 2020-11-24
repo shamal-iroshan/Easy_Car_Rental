@@ -32,7 +32,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void save(MultipartFile img, String id, String rootPath) {
-        file = new File(rootPath + "/uploads/" + id);
+        file = new File("D:\\IJSE\\lessons\\2nd semester\\Spring\\Final coursework\\Easy Car Rental\\Easy_Car_Rental_Back_End\\src\\uploads" + id);
         if (!file.exists()) {
             if (!file.mkdirs()) {
                 throw new RuntimeException("Not Created.!");

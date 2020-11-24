@@ -36,6 +36,9 @@
         <div id="horizontal-line"></div>
     </div>
 
+    <div id="page-controllers">
+        <p id="sign-out">Sign out</p>
+    </div>
 
 </div>
 
@@ -48,42 +51,36 @@
         <div class="container-fluid">
             <form>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <input type="text" class="form-control" id="txtBrand" placeholder="Brand">
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <input type="text" class="form-control" id="txtNoPassengers" placeholder="No of passengers">
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="cmbType"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Car Type
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="cmbType">
-                            <a class="dropdown-item" href="#">General</a>
-                            <a class="dropdown-item" href="#">Premium</a>
-                            <a class="dropdown-item" href="#">Luxury</a>
-                        </div>
+
+                    <div class="col-2">
+                        <select class="custom-select my-1 mr-sm-2" id="carType">
+                            <option selected>Car Type</option>
+                            <option value="general">General</option>
+                            <option value="premium">Premium</option>
+                            <option value="luxury">Luxury</option>
+                        </select>
                     </div>
-                    <div class="dropdown ml-4">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="cmbTransmission"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Transmission
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="cmbTransmission">
-                            <a class="dropdown-item" href="#">Auto</a>
-                            <a class="dropdown-item" href="#">Manual</a>
-                        </div>
+
+                    <div class="col-2">
+                        <select class="custom-select my-1 mr-sm-2" id="transmissionType">
+                            <option selected>Transmission</option>
+                            <option value="auto">Auto</option>
+                            <option value="manual">Manual</option>
+                        </select>
                     </div>
-                    <div class="dropdown ml-4">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="cmbFuel"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Fuel Type
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="cmbFuel">
-                            <a class="dropdown-item" href="#">Diesel</a>
-                            <a class="dropdown-item" href="#">Petrol</a>
-                        </div>
+
+                    <div class="col-2">
+                        <select class="custom-select my-1 mr-sm-2" id="fuelType">
+                            <option selected>Fuel Type</option>
+                            <option value="petrol">Petrol</option>
+                            <option value="diesel">Diesel</option>
+                        </select>
                     </div>
 
                 </div>
@@ -95,6 +92,10 @@
 
                     <div class="col-3">
                         <input type="text" class="form-control" id="txtColour" placeholder="Vehicle colour">
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="txtLossDamage" placeholder="Loss Damage Waiver">
                     </div>
 
                     <div class="col-3">
@@ -114,10 +115,10 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <input type="email" class="form-control" id="txtDailyRate" placeholder="Daily Rate">
+                        <input type="text" class="form-control" id="txtDailyRate" placeholder="Daily Rate">
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="password" class="form-control" id="txtMonthlyRate" placeholder="Monthly Rate">
+                        <input type="text" class="form-control" id="txtMonthlyRate" placeholder="Monthly Rate">
                     </div>
                 </div>
 
@@ -125,35 +126,35 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <input type="email" class="form-control" id="txtPrice" placeholder="Price">
+                        <input type="text" class="form-control" id="txtPrice" placeholder="Price">
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="password" class="form-control" id="txtDuration" placeholder="Duration">
+                        <input type="text" class="form-control" id="txtDuration" placeholder="Duration">
                     </div>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col-4">
                         <div class="form-group">
-                            <input type="email" class="form-control" id="txtPriceForExtraKM" placeholder="Price for Extra KM">
+                            <input type="text" class="form-control" id="txtPriceForExtraKM" placeholder="Price for Extra KM">
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="btn-group btn-group-lg" role="group" aria-label="First group">
                             <button type="button" class="btn btn-success" id="btnSaveCar">Save</button>
-                            <button type="button" class="btn btn-warning">Update</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                            <button type="button" class="btn btn-secondary">Clear</button>
+                            <button type="button" class="btn btn-warning" id="btnUpdateCar">Update</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop" >Delete</button>
+                            <button type="button" class="btn btn-secondary" id="btnCarClear">Clear</button>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text bg-primary text-white" id="basic-addon3">Search</span>
+                                <span class="input-group-text bg-primary text-white" id="searchCar">Search</span>
                             </div>
-                            <input type="text" class="form-control" id="txtSearch" aria-describedby="basic-addon3">
+                            <input type="text" class="form-control" id="txtCarSearch" aria-describedby="basic-addon3">
                         </div>
                     </div>
 
@@ -175,14 +176,38 @@
                             <th scope="col">Car Type</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tblCar">
 
                         </tbody>
                     </table>
 
                 </div>
-
             </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete car</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="txtCarDeleteID">Enter car ID you need to delete</label>
+                                <input type="text" class="form-control" id="txtCarDeleteID" placeholder="Car ID">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" id="btnDeleteCar">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -202,16 +227,8 @@
                             <th scope="col">Verify</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>O354654445v</td>
-                            <td>454656656</td>
-                            <td><button type="button" class="btn btn-secondary">View</button></td>
-                            <td><button type="button" class="btn btn-secondary">View</button></td>
-                            <td><button type="button" class="btn btn-success">Verify</button></td>
-                        </tr>
+                        <tbody id="tblCusBody">
+
                         </tbody>
                     </table>
                 </div>
@@ -226,7 +243,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <button type="button" class="btn btn-primary">Search</button>
+                    <button type="button" class="btn btn-primary" id="cusSearch">Search</button>
                 </div>
             </div>
 
@@ -244,16 +261,8 @@
                             <th scope="col">Licence NO</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>32244342</td>
-                            <td>hey@email.com</td>
-                            <td>35455646</td>
-                            <td>4644546</td>
-                        </tr>
+                        <tbody id="tblSearchCus">
+
 
                         </tbody>
                     </table>
@@ -278,7 +287,7 @@
                             <th scope="col" id="colDeny">Deny</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tblBookings">
                         <tr>
                             <th scope="row">1</th>
                             <td>Mark</td>
@@ -324,7 +333,37 @@
         </div>
     </div>
 
-    <div id="driver"></div>
+    <div id="driver">
+        <div class="jumbotron">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="txtDriverName" placeholder="Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="txtDriverContact" placeholder="Contact No">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="txtDriverNic" placeholder="NIC No">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="txtDriverUserName" placeholder="User Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="password" class="form-control" id="txtDriverPassword" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button type="button" class="btn btn-primary btn-block" id="btnDriverSave">Save</button>
+            </div>
+        </div>
+    </div>
 
     <div id="payments"></div>
 

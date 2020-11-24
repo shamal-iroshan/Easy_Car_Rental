@@ -14,7 +14,7 @@ import java.util.Date;
 public class Payment {
     @Id
     private String paymentID;
-    private Date date;
+    private String date;
     private String paymentType;
     private double amount;
 

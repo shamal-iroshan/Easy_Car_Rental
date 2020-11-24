@@ -14,7 +14,7 @@ import java.util.Date;
 public class Maintainance {
     @Id
     private String maintainanceID;
-    private Date date;
+    private String date;
     private String description;
 
     @ManyToOne(cascade = CascadeType.ALL)

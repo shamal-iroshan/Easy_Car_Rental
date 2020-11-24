@@ -3,6 +3,7 @@ package lk.ijse.spring.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,16 +11,16 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString
 @Entity
 public class Booking {
     @Id
     private String bookingID;
-    private Date date;
-    private Date returnDate;
-    private int lastKM;
-    private double lossDamageWaiver;
+    private String date;
+    private String pickupDate;
     private String status;
     private String note;
+    private String returnDate;
 
     @ManyToOne
     @JoinColumn(name = "cusID", referencedColumnName = "customerID", nullable = false)
@@ -30,7 +31,7 @@ public class Booking {
     private lk.ijse.spring.entity.Car car;
 
     @ManyToOne
-    @JoinColumn(name = "driverid", referencedColumnName = "driverID", nullable = false)
+    @JoinColumn(name = "driverid", referencedColumnName = "driverID")
     private Driver driver;
 
     @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)

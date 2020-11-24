@@ -11,6 +11,6 @@ import java.util.Date;
 @Data
 public class BookingReturnDto {
     private String returnID;
-    private Date date;
+    private String date;
     private double noOfKm;
 }

@@ -1,4 +1,3 @@
-var user;
 
 $('#btnRegister').click(function () {
     let name = $("#txtName").val();
@@ -8,8 +7,7 @@ $('#btnRegister').click(function () {
     let drivinglNo  = $('#txtDNo').val();
     let nicNo = $('#txtNicNo').val();
     let userName = $('#txtUserName').val();
-    let password = $('#txtPassword').val();
-
+    let password = $('#txtPass').val();
 
     $.ajax({
         method: "POST",
@@ -54,12 +52,17 @@ $('#btnLogin').click(function () {
             method: "GET",
             url: 'http://localhost:8080/carRental/api/v1/customer/'+userName+'/'+password,
             success:function (res) {
+                console.log(res);
                 if(res.message == 'customer'){
-                    localStorage.setItem('loggedUser', res);
+                    document.cookie = "user="+res.data.customerID+"-"+res.data.name;
                     window.location.replace("customer.html");
                 }else if(res.message == 'driver'){
-                    localStorage.setItem('loggedUser', res);
+                    document.cookie = "user="+res.data.driverID+"-"+res.data.name;
                     window.location.replace("driver.html");
+                }else if(res.message == 'admin'){
+                    console.log(res);
+                    document.cookie = "user="+res.data.adminID+"-"+res.data.userName;
+                    window.location.replace("admin.html");
                 }
             },
             error:function (ob, textStatus, error) {

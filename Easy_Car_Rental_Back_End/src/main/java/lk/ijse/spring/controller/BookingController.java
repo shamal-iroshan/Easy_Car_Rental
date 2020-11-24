@@ -19,9 +19,8 @@ public class BookingController {
     @Autowired
     BookingService bookingService;
 
-    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity bookCar(@RequestBody BookingDto dto){
-        System.out.println(dto.toString());
+    public ResponseEntity bookCar(BookingDto dto){
+        System.out.println("dto.toString()");
         bookingService.saveBooking(dto);
         StandardResponse response = new StandardResponse(200, "Success", null);
         return new ResponseEntity(response, HttpStatus.CREATED);

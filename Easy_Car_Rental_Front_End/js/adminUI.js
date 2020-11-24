@@ -19,6 +19,8 @@ $('#btnAddCar').click(function () {
 
     setVisible();
     $('#car').css('display','block');
+
+    loadAllCars();
 });
 
 $('#btnCustomer').click(function () {
@@ -28,6 +30,8 @@ $('#btnCustomer').click(function () {
 
     setVisible();
     $('#customer').css('display','block');
+
+    loadAllUnverifiedCustomers();
 });
 
 $('#btnBookings').click(function () {
@@ -37,6 +41,8 @@ $('#btnBookings').click(function () {
 
     setVisible();
     $('#bookings').css('display','block');
+
+    loadAllBookings();
 });
 
 $('#btnDriver').click(function () {
@@ -87,3 +93,11 @@ function setVisible() {
         $(containers[i]).css('display','none');
     }
 }
+
+$('#sign-out').click(function () {
+    if (confirm("Are you sure to Sign-out")){
+        window.location.replace("index.html");
+    }else{
+
+    }
+});

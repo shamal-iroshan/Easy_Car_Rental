@@ -11,6 +11,6 @@ import java.util.Date;
 @Data
 public class MaintainanceDto {
     private String maintainanceID;
-    private Date date;
+    private String date;
     private String description;
 }

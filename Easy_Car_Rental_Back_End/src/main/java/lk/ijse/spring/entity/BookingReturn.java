@@ -14,7 +14,7 @@ import java.util.Date;
 public class BookingReturn {
     @Id
     private String returnID;
-    private Date date;
+    private String date;
     private double noOfKm;
 
     @OneToOne(cascade = CascadeType.ALL)

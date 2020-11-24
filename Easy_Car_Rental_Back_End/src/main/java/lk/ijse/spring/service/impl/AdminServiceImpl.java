@@ -81,6 +81,10 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public AdminDto login(String userName, String password) {
-        return null;
+        Admin login = adminRepo.login(userName, password);
+        if (login == null){
+            return null;
+        }
+        return modelMapper.map(login,AdminDto.class);
     }
 }

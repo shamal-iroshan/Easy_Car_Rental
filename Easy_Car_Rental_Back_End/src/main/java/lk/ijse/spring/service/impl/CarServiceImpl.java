@@ -78,4 +78,10 @@ public class CarServiceImpl implements CarService {
             return "V001";
         }
     }
+
+    @Override
+    public List<CarDto> getCarByType(String type) {
+        List<Car> cars = carRepo.findCarsByType(type);
+        return modelMapper.map(cars, new TypeToken<List<Car>>(){}.getType());
+    }
 }
